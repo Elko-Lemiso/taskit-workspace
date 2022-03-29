@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "taskit": "apps/taskit",
-    "taskit-e2e": "apps/taskit-e2e"
+    "taskit-e2e": "apps/taskit-e2e",
+    "ui": "libs/ui"
   }
 }
