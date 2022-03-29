@@ -1,0 +1,28 @@
+{
+  "root": "apps/taskit-e2e",
+  "sourceRoot": "apps/taskit-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/taskit-e2e/cypress.json",
+        "devServerTarget": "taskit:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "taskit:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/taskit-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["taskit"]
+}
