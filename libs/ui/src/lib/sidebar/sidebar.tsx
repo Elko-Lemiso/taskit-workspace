@@ -1,19 +1,13 @@
-import styles from "./sidebar.module.scss";
-import { Navbar, ScrollArea, Title, Input } from "@mantine/core";
-import { Alien, Search } from "tabler-icons-react";
+import { Navbar, ScrollArea, Input } from "@mantine/core";
+import { Search } from "tabler-icons-react";
 import { MainLinks } from "./mainLinks";
-import Link from "next/link";
 /* eslint-disable-next-line */
 export interface SidebarProps {}
 
 export function Sidebar(props: SidebarProps) {
   return (
-    <Navbar width={{ base: 500 }} height={500} p="xs">
+    <Navbar width={{ base: 360 }} height={500} p="xs">
       <Navbar.Section mt="xs">
-        <Title order={5}>
-          Open jobs
-          <Alien size={18} />
-        </Title>
         <Input icon={<Search />} placeholder="Find a job" />
       </Navbar.Section>
 
@@ -21,7 +15,11 @@ export function Sidebar(props: SidebarProps) {
         <MainLinks />
       </Navbar.Section>
 
-      <Navbar.Section>Icon filter</Navbar.Section>
+      <Navbar.Section>
+        <div>
+          a bunch of bs
+        </div>
+      </Navbar.Section>
     </Navbar>
   );
 }

@@ -1,12 +1,9 @@
-import {
-  GitPullRequest,
-  AlertCircle,
-  Messages,
-  Database,
-  Shoe,
-} from "tabler-icons-react"
-import {GiBroom} from "react-icons/gi";
+import { GitPullRequest, AlertCircle, Shoe } from "tabler-icons-react";
+import { GiBroom } from "react-icons/gi";
 import { ThemeIcon, UnstyledButton, Badge, Stack, Text } from "@mantine/core";
+import { RiChat3Fill } from "react-icons/ri";
+import { FaHandSpock, FaMapMarker, FaClock } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 interface MainLinkProps {
   icon: React.ReactNode;
@@ -33,13 +30,17 @@ function MainLink({
   comments,
   applicants,
 }: MainLinkProps) {
+  const router = useRouter();
   return (
     <UnstyledButton
+      onClick={() => router.push("/about")}
       sx={(theme) => ({
         display: "flex",
         width: "100%",
         alignItems: "center",
         padding: theme.spacing.xs,
+        marginTop: 8,
+        position: "relative",
         borderRadius: theme.radius.sm,
         color:
           theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
@@ -53,11 +54,25 @@ function MainLink({
       })}
     >
       <div>
-        <ThemeIcon variant="outline" radius="xl" size="xl" color={color} >
+        <ThemeIcon
+          variant="gradient"
+          gradient={{ from: "indigo", to: "cyan" }}
+          radius="xl"
+          size="xl"
+          color={color}
+        >
           {icon}
         </ThemeIcon>
       </div>
-      <div style={{marginLeft: 16}}>
+      <div
+        style={{
+          height: 86,
+          display: "flex",
+          flexDirection: "column",
+          marginLeft: 19,
+          justifyContent: "space-evenly",
+        }}
+      >
         <Text transform="uppercase" size="xs">
           {category}
         </Text>
@@ -65,26 +80,50 @@ function MainLink({
           component="span"
           align="center"
           variant="gradient"
-          gradient={{ from: "green", to: "cyan", deg: 45 }}
-          size="xl"
+          gradient={{ from: "green", to: "indigo", deg: 45 }}
+          size="lg"
           weight={700}
           style={{ fontFamily: "Greycliff CF, sans-serif" }}
         >
           {label}
         </Text>
-        <Text size="xs">{location}</Text>
+        <Text size="xs">
+          <FaMapMarker size={10} /> {location}
+        </Text>
         <Text weight={700} size="xs">
-          {jobTime}
+          <FaClock size={10} /> {jobTime}
         </Text>
       </div>
-      <div style={{marginLeft: 16}}>
+
+      <div
+        style={{
+          height: 86,
+          display: "flex",
+          flexDirection: "column",
+          marginLeft: 29,
+          justifyContent: "space-evenly",
+          textAlign: "right",
+          position: "absolute",
+          right: "21px",
+        }}
+      >
         <Text weight={700} size="xl">
           ${offer}
         </Text>
-        <Badge variant="outline">{status}</Badge>
-
-        <Text size="xs">{comments}</Text>
-        <Text size="sm">{applicants}</Text>
+        <Badge
+          variant="gradient"
+          gradient={{ from: "teal", to: "lime", deg: 105 }}
+        >
+          {status}
+        </Badge>
+        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+          <Text size="xs">
+            <RiChat3Fill size={10} /> {comments}
+          </Text>
+          <Text size="xs">
+            <FaHandSpock size={10} /> {applicants}
+          </Text>
+        </div>
       </div>
     </UnstyledButton>
   );
@@ -179,5 +218,6 @@ const data = [
 
 export function MainLinks() {
   const links = data.map((link) => <MainLink {...link} key={link.label} />);
+
   return <div>{links}</div>;
 }

@@ -8,9 +8,6 @@ import Sidebar from "./sidebar/sidebar";
 export interface UiProps {}
 
 export function Ui({ Component, pageProps }: AppProps) {
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const dark = colorScheme === "dark";
-
   return (
     <AppShell padding="md" navbar={<Sidebar />} header={<NavigationHeader />}>
       <Component {...pageProps} />
