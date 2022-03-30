@@ -1,0 +1,52 @@
+{
+  "root": "apps/taskit-jobs",
+  "sourceRoot": "apps/taskit-jobs/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/taskit-jobs",
+        "main": "apps/taskit-jobs/src/main.ts",
+        "tsConfig": "apps/taskit-jobs/tsconfig.app.json",
+        "assets": ["apps/taskit-jobs/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/taskit-jobs/src/environments/environment.ts",
+              "with": "apps/taskit-jobs/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "taskit-jobs:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/taskit-jobs/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/taskit-jobs"],
+      "options": {
+        "jestConfig": "apps/taskit-jobs/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

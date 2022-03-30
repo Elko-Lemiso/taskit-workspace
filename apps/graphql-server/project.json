@@ -1,0 +1,63 @@
+{
+  "root": "apps/graphql-server",
+  "sourceRoot": "apps/graphql-server/src",
+  "projectType": "application",
+  "type": "module",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/graphql-server",
+        "main": "apps/graphql-server/src/main.ts",
+        "tsConfig": "apps/graphql-server/tsconfig.app.json",
+        "assets": [
+          "apps/graphql-server/src/assets"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/graphql-server/src/environments/environment.ts",
+              "with": "apps/graphql-server/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "graphql-server:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/graphql-server/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/apps/graphql-server"
+      ],
+      "options": {
+        "jestConfig": "apps/graphql-server/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -16,6 +16,7 @@ interface MainLinkProps {
   status: string;
   comments: number;
   applicants: number;
+  jid: string;
 }
 
 function MainLink({
@@ -29,11 +30,12 @@ function MainLink({
   status,
   comments,
   applicants,
+  jid
 }: MainLinkProps) {
   const router = useRouter();
   return (
     <UnstyledButton
-      onClick={() => router.push("/about")}
+      onClick={() => router.push(`/job/${jid}`)}
       sx={(theme) => ({
         display: "flex",
         width: "100%",
@@ -73,7 +75,7 @@ function MainLink({
           justifyContent: "space-evenly",
         }}
       >
-        <Text transform="uppercase" size="xs">
+        <Text color="dimmed" transform="uppercase" size="xs">
           {category}
         </Text>
         <Text
@@ -81,7 +83,7 @@ function MainLink({
           align="center"
           variant="gradient"
           gradient={{ from: "green", to: "indigo", deg: 45 }}
-          size="lg"
+          size="md"
           weight={700}
           style={{ fontFamily: "Greycliff CF, sans-serif" }}
         >
@@ -110,9 +112,7 @@ function MainLink({
         <Text weight={700} size="xl">
           ${offer}
         </Text>
-        <Badge
-          variant="gradient"
-          gradient={{ from: "teal", to: "lime", deg: 105 }}
+        <Badge color="teal" size="xs" variant="outline"
         >
           {status}
         </Badge>
@@ -140,7 +140,7 @@ const data = [
     offer: 15,
     status: "open",
     comments: 3,
-    applicants: 5,
+    applicants: 5, jid: "23456gfadsgfa78"
   },
   {
     icon: <AlertCircle size={16} />,
@@ -152,7 +152,7 @@ const data = [
     offer: 15,
     status: "open",
     comments: 3,
-    applicants: 5,
+    applicants: 5, jid: "23456gfadsgiifa78"
   },
   {
     icon: <Shoe size={16} />,
@@ -164,7 +164,7 @@ const data = [
     offer: 15,
     status: "open",
     comments: 3,
-    applicants: 5,
+    applicants: 5, jid: "23456gfasxgjfxdsgfa78"
   },
   {
     icon: <GiBroom size={16} />,
@@ -176,7 +176,7 @@ const data = [
     offer: 15,
     status: "open",
     comments: 3,
-    applicants: 5,
+    applicants: 5, jid: "23456gfgsdgasrgradsgfa78"
   },
   {
     icon: <Shoe size={16} />,
@@ -188,7 +188,7 @@ const data = [
     offer: 15,
     status: "open",
     comments: 3,
-    applicants: 5,
+    applicants: 5, jid: "23456gfadewggrehsgfa78"
   },
   {
     icon: <Shoe size={16} />,
@@ -200,7 +200,84 @@ const data = [
     offer: 15,
     status: "open",
     comments: 3,
-    applicants: 5,
+    applicants: 5, jid: "23456gfjztrjzrtjadsgfa78"
+  },{
+    icon: <Shoe size={16} />,
+    color: "grape",
+    label: "Cleaning shoes ",
+    category: "Cleaning",
+    jobTime: "Thur 12 March",
+    location: "Amsterdam",
+    offer: 15,
+    status: "open",
+    comments: 3,
+    applicants: 5, jid: "23jdzfjhtfjetj456gfadsgfa78"
+  },{
+    icon: <Shoe size={16} />,
+    color: "grape",
+    label: "Cleaning shoes ",
+    category: "Cleaning",
+    jobTime: "Thur 12 March",
+    location: "Amsterdam",
+    offer: 15,
+    status: "open",
+    comments: 3,
+    applicants: 5, jid: "23456gfadshzdfhfdzhzdfhfdzhgfa78"
+  },{
+    icon: <Shoe size={16} />,
+    color: "grape",
+    label: "Cleaning shoes ",
+    category: "Cleaning",
+    jobTime: "Thur 12 March",
+    location: "Amsterdam",
+    offer: 15,
+    status: "open",
+    comments: 3,
+    applicants: 5, jid: "23456ghfdzjmgjndzfadsgfa78"
+  },{
+    icon: <Shoe size={16} />,
+    color: "grape",
+    label: "Cleaning shoes ",
+    category: "Cleaning",
+    jobTime: "Thur 12 March",
+    location: "Amsterdam",
+    offer: 15,
+    status: "open",
+    comments: 3,
+    applicants: 5, jid: "23456gfahdzfhfdzhzrtdsgfa78"
+  },{
+    icon: <Shoe size={16} />,
+    color: "grape",
+    label: "Cleaning shoes ",
+    category: "Cleaning",
+    jobTime: "Thur 12 March",
+    location: "Amsterdam",
+    offer: 15,
+    status: "open",
+    comments: 3,
+    applicants: 5, jid: "23456gfaddgfhdzfhfsgfa78"
+  },{
+    icon: <Shoe size={16} />,
+    color: "grape",
+    label: "Cleaning shoes ",
+    category: "Cleaning",
+    jobTime: "Thur 12 March",
+    location: "Amsterdam",
+    offer: 15,
+    status: "open",
+    comments: 3,
+    applicants: 5, jid: "23456ggfjgfxjtrjtjfadsgfa78"
+  },{
+    icon: <Shoe size={16} />,
+    color: "grape",
+    label: "Cleaning shoes ",
+    category: "Cleaning",
+    jobTime: "Thur 12 March",
+    location: "Amsterdam",
+    offer: 15,
+    status: "open",
+    comments: 3,
+    applicants: 5, jid: "23456gfjgfjfghjgfjgjfgjadsgfa78"
   },
   {
     icon: <Shoe size={16} />,
@@ -212,7 +289,7 @@ const data = [
     offer: 15,
     status: "open",
     comments: 3,
-    applicants: 5,
+    applicants: 5, jid: "23456gbsdbhgffadsgfa78"
   },
 ];
 

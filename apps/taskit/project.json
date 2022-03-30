@@ -19,7 +19,8 @@
       "executor": "@nrwl/next:server",
       "options": {
         "buildTarget": "taskit:build",
-        "dev": true
+        "dev": true,
+        "proxyConfig": "apps/taskit/proxy.conf.json"
       },
       "configurations": {
         "production": {

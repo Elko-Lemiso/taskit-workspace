@@ -1,6 +1,6 @@
 
 
-function About({ Component, pageProps }) {
+function About() {
   return (
     <>
       poop

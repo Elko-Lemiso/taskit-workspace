@@ -1,5 +1,4 @@
 import { AppProps } from "next/app";
-import { useState } from "react";
 import Head from "next/head";
 import "./styles.css";
 import { Ui } from "@taskit-workspace/ui";
@@ -15,7 +14,6 @@ function CustomApp({ Component, pageProps }: AppProps) {
     key: "mantine-color-scheme",
     defaultValue: "light",
   });
-
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
 

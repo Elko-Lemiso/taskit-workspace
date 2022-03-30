@@ -1,8 +1,10 @@
 {
   "version": 2,
   "projects": {
+    "graphql-server": "apps/graphql-server",
     "taskit": "apps/taskit",
     "taskit-e2e": "apps/taskit-e2e",
+    "taskit-jobs": "apps/taskit-jobs",
     "ui": "libs/ui"
   }
 }
