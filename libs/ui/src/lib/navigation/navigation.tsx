@@ -24,20 +24,23 @@ export function NavigationHeader(props: NavigationProps) {
       <div style={{ display: "flex", alignItems: "center", height: "100%" }}>
         <Grid align="center" columns={7} style={{ width: "100%" }}>
           <Grid.Col span={2}>
-            <ThemeIcon variant="outline" radius="xl" size="xl" color={"green"}>
-              <WiAlien size={21} />
-            </ThemeIcon>
+            <Link href="/">
+              <ActionIcon
+                variant="outline"
+                radius="xl"
+                color={"green"}
+                size="lg"
+              >
+                <WiAlien size={25} />
+              </ActionIcon>
+            </Link>
           </Grid.Col>
 
           <Grid.Col
             span={5}
             style={{ display: "flex", justifyContent: "flex-end" }}
           >
-
-            <ActionIcon
-              color={"teal"}
-              title="Toggle color scheme"
-            >
+            <ActionIcon color={"teal"} title="Toggle color scheme">
               <RiChat3Fill />
             </ActionIcon>
 
