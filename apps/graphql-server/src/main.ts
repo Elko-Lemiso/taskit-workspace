@@ -46,7 +46,7 @@ const httpServer = createServer(app);
 // Set up WebSocket server.
 const wsServer = new WebSocketServer({
   server: httpServer,
-  path: "/graphql",
+  path: "/subscriptions",
 });
 const serverCleanup = useServer({ schema }, wsServer);
 
@@ -69,6 +69,7 @@ const server = new ApolloServer({
     },
   ],
 });
+
 async function start() {
   await server.start();
 
@@ -80,7 +81,7 @@ async function start() {
       `🚀 Query endpoint ready at http://localhost:${PORT}${server.graphqlPath}`
     );
     console.log(
-      `🚀 Subscription endpoint ready at ws://localhost:${PORT}${server.graphqlPath}`
+      `🚀 Subscription endpoint ready at ws://localhost:${PORT}/subscriptions`
     );
   });
 }
