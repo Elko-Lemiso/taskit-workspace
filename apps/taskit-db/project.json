@@ -1,16 +1,15 @@
 {
-  "root": "apps/taskit-jobs",
-  "sourceRoot": "apps/taskit-jobs/src",
+  "root": "apps/taskit-db",
+  "sourceRoot": "apps/taskit-db/src",
   "projectType": "application",
   "targets": {
     "build": {
       "executor": "@nrwl/node:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/taskit-jobs",
-        "main": "apps/taskit-jobs/src/main.ts",
-        "tsConfig": "apps/taskit-jobs/tsconfig.app.json",
-        "assets": ["apps/taskit-jobs/src/assets"]
+        "outputPath": "dist/apps/taskit-db",
+        "main": "apps/taskit-db/src/main.ts",
+        "tsConfig": "apps/taskit-db/tsconfig.app.json"
       },
       "configurations": {
         "production": {
@@ -19,8 +18,8 @@
           "inspect": false,
           "fileReplacements": [
             {
-              "replace": "apps/taskit-jobs/src/environments/environment.ts",
-              "with": "apps/taskit-jobs/src/environments/environment.prod.ts"
+              "replace": "apps/taskit-db/src/environments/environment.ts",
+              "with": "apps/taskit-db/src/environments/environment.prod.ts"
             }
           ]
         }
@@ -29,21 +28,21 @@
     "serve": {
       "executor": "@nrwl/node:node",
       "options": {
-        "buildTarget": "taskit-jobs:build"
+        "buildTarget": "taskit-db:build"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/taskit-jobs/**/*.ts"]
+        "lintFilePatterns": ["apps/taskit-db/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/taskit-jobs"],
+      "outputs": ["coverage/apps/taskit-db"],
       "options": {
-        "jestConfig": "apps/taskit-jobs/jest.config.js",
+        "jestConfig": "apps/taskit-db/jest.config.js",
         "passWithNoTests": true
       }
     }

@@ -12,10 +12,7 @@
       "options": {
         "outputPath": "dist/apps/graphql-server",
         "main": "apps/graphql-server/src/main.ts",
-        "tsConfig": "apps/graphql-server/tsconfig.app.json",
-        "assets": [
-          "apps/graphql-server/src/assets"
-        ]
+        "tsConfig": "apps/graphql-server/tsconfig.app.json"
       },
       "configurations": {
         "production": {

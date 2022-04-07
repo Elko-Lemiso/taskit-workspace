@@ -19,7 +19,7 @@ import { WebSocketLink } from "@apollo/client/link/ws";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import ws from "ws";
 
-function CustomApp({ Component, pageProps }: AppProps) {
+function CustomApp({ Component, pageProps, router }: AppProps) {
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: "mantine-color-scheme",
     defaultValue: "light",
@@ -55,6 +55,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
         link: splitLink,
         cache: new InMemoryCache(),
       });
+
       setClient(wsClient);
     }
   }, [process.browser]);
@@ -76,7 +77,11 @@ function CustomApp({ Component, pageProps }: AppProps) {
               theme={{ colorScheme }}
             >
               <main className="app">
-                <Ui Component={Component} pageProps={pageProps} />
+                <Ui
+                  Component={Component}
+                  router={router}
+                  pageProps={pageProps}
+                />
               </main>
             </MantineProvider>
           </ColorSchemeProvider>

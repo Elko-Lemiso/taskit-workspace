@@ -6,33 +6,21 @@ import { PubSub } from "graphql-subscriptions";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import { WebSocketServer } from "ws";
 import { useServer } from "graphql-ws/lib/use/ws";
+import cote from "cote";
+import {resolvers, typeDefs } from './schema'
+
+const pubsub = new PubSub();
+// TODO : SPLIT CODE INTO FOLDERS : JOBS ===> typedef, resolver. and continue
+
+const subscriber = new cote.Subscriber({ name: "arbitration subscriber" });
+const requester = new cote.Requester({
+  name: "userClient",
+  namespace: "user",
+});
+requester.send({ type: "poop", query: { uuid: "selfUUID.uuid" } });
 
 const PORT = 4000;
-const pubsub = new PubSub();
 
-// Schema definition
-const typeDefs = gql`
-  type Query {
-    currentNumber: Int
-  }
-  type Subscription {
-    numberIncremented: Int
-  }
-`;
-
-// Resolver map
-const resolvers = {
-  Query: {
-    currentNumber() {
-      return currentNumber;
-    },
-  },
-  Subscription: {
-    numberIncremented: {
-      subscribe: () => pubsub.asyncIterator(["NUMBER_INCREMENTED"]),
-    },
-  },
-};
 
 // Create schema, which will be used separately by ApolloServer and
 // the WebSocket server.
@@ -85,14 +73,5 @@ async function start() {
     );
   });
 }
-start()
-// In the background, increment a number every second and notify subscribers when
-// it changes.
-let currentNumber = 0;
-function incrementNumber() {
-  currentNumber++;
-  pubsub.publish("NUMBER_INCREMENTED", { numberIncremented: currentNumber });
-  setTimeout(incrementNumber, 1000);
-}
-// Start incrementing
-incrementNumber();
+start();
+

@@ -5,7 +5,7 @@
     "subscription": "libs/subscription",
     "taskit": "apps/taskit",
     "taskit-e2e": "apps/taskit-e2e",
-    "taskit-jobs": "apps/taskit-jobs",
+    "taskit-db": "apps/taskit-db",
     "ui": "libs/ui"
   }
 }
