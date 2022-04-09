@@ -13,17 +13,15 @@ const responder = new cote.Responder({
 });
 const publisher = new cote.Publisher({ name: "arbitration publisher" });
 
-// publisher.on("rate", (update) => {
-//   console.log(update);
-// });
-
 responder.on("get.task", (req, cb) => {
-
-  getTask(req, cb)
+  getTask(req.query, function (a) {
+    if (a.data !== null) cb(false, true);
+    cb(false, false);
+  });
 });
 
 responder.on("create.task", (req, cb) => {
-  createTask(req, cb)
+  createTask(req, cb);
 });
 
 publisher.publish("rate updated", "req");
