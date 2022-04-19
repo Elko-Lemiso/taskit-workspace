@@ -9,6 +9,7 @@ import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { createClient } from "graphql-ws";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import AppLayout from "../layout/AppLayout";
+import { UserProvider } from "@auth0/nextjs-auth0";
 
 function CustomApp({ Component, pageProps, router }: AppProps) {
   const [client, setClient] = useState(null);
@@ -50,18 +51,20 @@ function CustomApp({ Component, pageProps, router }: AppProps) {
 
   return (
     client && (
-      <ApolloProvider client={client}>
-        <>
-          <Head>
-            <title>Task it</title>
-          </Head>
-          <AppLayout
-            Component={Component}
-            router={router}
-            pageProps={pageProps}
-          />
-        </>
-      </ApolloProvider>
+      <UserProvider>
+        <ApolloProvider client={client}>
+          <>
+            <Head>
+              <title>Task it</title>
+            </Head>
+            <AppLayout
+              Component={Component}
+              router={router}
+              pageProps={pageProps}
+            />
+          </>
+        </ApolloProvider>
+      </UserProvider>
     )
   );
 }

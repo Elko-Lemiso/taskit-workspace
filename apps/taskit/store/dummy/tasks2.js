@@ -22,7 +22,7 @@ export const dummyTasks2 =
     jobTime: "Thur 12 March",
     location: "Amsterdam",
     offer: 15,
-    status: "open",
+    status: "closed",
     comments: 3,
     applicants: 5, jid: "23456gfadsgiifa78"
   },

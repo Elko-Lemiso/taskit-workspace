@@ -56,10 +56,9 @@ export const MainLink = ({
       <div>
         <ThemeIcon
           variant="gradient"
-          gradient={{ from: "indigo", to: "cyan" }}
+          gradient={{ from: "orange", to: "red" }}
           radius="xl"
           size="xl"
-          color={color}
         >
           {icon}
         </ThemeIcon>
@@ -80,7 +79,7 @@ export const MainLink = ({
           component="span"
           align="center"
           variant="gradient"
-          gradient={{ from: "green", to: "indigo", deg: 45 }}
+          gradient={{ from: "orange", to: "red" }}
           size="md"
           weight={700}
           style={{ fontFamily: "Greycliff CF, sans-serif" }}
@@ -101,16 +100,24 @@ export const MainLink = ({
           display: "flex",
           flexDirection: "column",
           marginLeft: 29,
-          justifyContent: "space-evenly",
+          justifyContent: "space-between",
           textAlign: "right",
           position: "absolute",
           right: "21px",
         }}
       >
-        <Text weight={700} size="xl">
+        <Text
+          variant="gradient"
+          gradient={{ from: "teal", to: "lime", deg: 105 }}
+          weight={700}
+          size="xl"
+        >
           ${offer}
         </Text>
-        <Badge color="teal" size="xs" variant="outline">
+        <Badge
+          variant="gradient"
+          gradient={status === 'open' ? { from: "teal", to: "lime", deg: 105 } : { from: "orange", to: "red" }}
+        >
           {status}
         </Badge>
         <div style={{ display: "flex", justifyContent: "space-evenly" }}>

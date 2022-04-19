@@ -10,9 +10,12 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.5.10",
+    "@auth0/nextjs-auth0": "^1.7.0",
     "@mantine/core": "^4.1.0",
     "@mantine/hooks": "^4.1.0",
     "@mantine/next": "^4.1.0",
+    "@mantine/dates": "^4.1.0",
+    "dayjs": "^1.11.1",
     "@nrwl/next": "13.9.5",
     "apollo-server-core": "^3.6.7",
     "apollo-server-express": "^3.6.7",

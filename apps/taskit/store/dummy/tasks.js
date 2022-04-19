@@ -4,7 +4,7 @@ export const dummyTasks =
 [
   {
     icon: <GitPullRequest size={16} />,
-    color: "blue",
+    color: "purple",
     label: "Cleaning shoes",
     category: "Cleaning",
     jobTime: "Thur 12 March",

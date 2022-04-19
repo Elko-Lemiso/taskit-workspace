@@ -9,7 +9,6 @@ export function Index() {
   `;
 
   const { loading, data } = useSubscription(SUB);
-  console.log(data);
 
   return (
     <div>

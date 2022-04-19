@@ -8,8 +8,13 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { ChevronRight, ChevronLeft } from "tabler-icons-react";
+import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
 
-export const ProfileCard = ({username, email, avatar}) => {
+
+export const ProfileCard = ({ username, email, avatar }) => {
+
+  const { user, isLoading } = useUser();
+
   const theme = useMantineTheme();
   return (
     <Box
@@ -40,16 +45,13 @@ export const ProfileCard = ({username, email, avatar}) => {
         }}
       >
         <Group>
-          <Avatar
-            src={avatar}
-            radius="xl"
-          />
+          <Avatar src={user ? user.picture : avatar}radius="xl" />
           <Box sx={{ flex: 1 }}>
             <Text size="sm" weight={500}>
-             {username} 
+              {user ? user.name : username}
             </Text>
             <Text color="dimmed" size="xs">
-              {email}
+            {user ? user.email : email}
             </Text>
           </Box>
 

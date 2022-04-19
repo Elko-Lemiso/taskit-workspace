@@ -2,24 +2,21 @@ import {
   Navbar,
   ScrollArea,
   Input,
-  UnstyledButton,
+  Button,
+  Drawer,
   Group,
-  Avatar,
-  Text,
-  Box,
-  useMantineTheme,
 } from "@mantine/core";
+import { useState } from "react";
 import { Search } from "tabler-icons-react";
 import { ChevronRight, ChevronLeft } from "tabler-icons-react";
 import { MainLink } from "./mainLinks";
 import { useRouter } from "next/router";
 import { ProfileCard } from "../ProfileCard";
+import {TaskForm} from '../Forms/Tasks'
 /* eslint-disable-next-line */
 
-export function Sidebar({data}) {
-  const theme = useMantineTheme();
-  const router = useRouter();
-
+export function Sidebar({ data }) {
+  const [opened, setOpened] = useState(false);
 
   return (
     <Navbar width={{ base: 360 }} height={"calc(100vh - 60px) "} p="xs">
@@ -28,19 +25,31 @@ export function Sidebar({data}) {
       </Navbar.Section>
 
       <Navbar.Section grow component={ScrollArea} mx="-xs" px="xs">
-        {data.map((link,index) => {
+        {data.map((link, index) => {
           return <MainLink {...link} key={index} />;
         })}
       </Navbar.Section>
 
+      <Drawer
+        opened={opened}
+        onClose={() => setOpened(false)}
+        padding="xl"
+        size="xl"
+      >
+       <TaskForm/> 
+      </Drawer>
+
       <Navbar.Section>
-        <ProfileCard
-          username={"Elko Lemiso"}
-          email={"elko@gmail.com"}
-          avatar={
-            "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80"
-          }
-        />
+        <Button
+          radius="xl"
+          size="lg"
+          variant="gradient"
+          gradient={{ from: "teal", to: "lime", deg: 105 }}
+          fullWidth={true}
+          onClick={() => setOpened(true)}
+        >
+          Post a Task
+        </Button>
       </Navbar.Section>
     </Navbar>
   );

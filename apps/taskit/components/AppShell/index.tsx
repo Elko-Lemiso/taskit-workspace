@@ -11,11 +11,13 @@ export interface AppShellProps {}
 
 export function AppShellComponent({ Component, pageProps, router }: AppProps) {
   
+  
   const [data, setData] = useState([]);
   useEffect(() => {
     if (router.route === "/") setData(dummyTasks);
     if (router.route === "/jobs/[jid]") setData(dummyTasks2);
   }, [router.route]);
+
 
   return (
     <AppShell
