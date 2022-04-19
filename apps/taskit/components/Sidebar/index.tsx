@@ -1,18 +1,8 @@
-import {
-  Navbar,
-  ScrollArea,
-  Input,
-  Button,
-  Drawer,
-  Group,
-} from "@mantine/core";
+import { Navbar, ScrollArea, Input, Button, Drawer,Text } from "@mantine/core";
 import { useState } from "react";
 import { Search } from "tabler-icons-react";
-import { ChevronRight, ChevronLeft } from "tabler-icons-react";
-import { MainLink } from "./mainLinks";
-import { useRouter } from "next/router";
-import { ProfileCard } from "../ProfileCard";
-import {TaskForm} from '../Forms/Tasks'
+import { TaskCard } from "../Cards/TaskCard";
+import { TaskForm } from "../Forms/Tasks";
 /* eslint-disable-next-line */
 
 export function Sidebar({ data }) {
@@ -25,9 +15,14 @@ export function Sidebar({ data }) {
       </Navbar.Section>
 
       <Navbar.Section grow component={ScrollArea} mx="-xs" px="xs">
-        {data.map((link, index) => {
-          return <MainLink {...link} key={index} />;
-        })}
+        {data ? (
+          data.map((link, index) => {
+            
+            return <TaskCard {...link} key={index} />;
+          })
+        ) : (
+          <Text>No jobs here</Text>
+        )}
       </Navbar.Section>
 
       <Drawer
@@ -36,7 +31,7 @@ export function Sidebar({ data }) {
         padding="xl"
         size="xl"
       >
-       <TaskForm/> 
+        <TaskForm />
       </Drawer>
 
       <Navbar.Section>

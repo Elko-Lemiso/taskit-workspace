@@ -3,7 +3,7 @@ import { RiChat3Fill } from "react-icons/ri";
 import { FaHandSpock, FaMapMarker, FaClock } from "react-icons/fa";
 import { useRouter } from "next/router";
 
-interface MainLinkProps {
+interface TaskCardProps {
   icon: React.ReactNode;
   color: string;
   label: string;
@@ -17,7 +17,7 @@ interface MainLinkProps {
   jid: string;
 }
 
-export const MainLink = ({
+export const TaskCard = ({
   icon,
   color,
   label,
@@ -29,7 +29,7 @@ export const MainLink = ({
   comments,
   applicants,
   jid,
-}: MainLinkProps) => {
+}: TaskCardProps) => {
   const router = useRouter();
   return (
     <UnstyledButton
@@ -78,8 +78,6 @@ export const MainLink = ({
         <Text
           component="span"
           align="center"
-          variant="gradient"
-          gradient={{ from: "orange", to: "red" }}
           size="md"
           weight={700}
           style={{ fontFamily: "Greycliff CF, sans-serif" }}

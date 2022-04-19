@@ -35,7 +35,9 @@ export function NavigationHeader(props: NavigationProps) {
   const dark = colorScheme === "dark";
 
   const { user, isLoading } = useUser();
-
+ 
+  console.log(user);
+  
   return (
     <Header height={60} p="md">
       <div style={{ display: "flex", alignItems: "center", height: "100%" }}>

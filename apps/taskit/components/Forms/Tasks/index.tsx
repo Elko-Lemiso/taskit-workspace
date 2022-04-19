@@ -7,18 +7,17 @@ import {
   Textarea,
   InputWrapper,
   TextInput,
+  Button,
 } from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
 
 export const TaskForm = () => {
-
   const [data, setData] = useState([
     "Cleaning",
     "Manual work",
     "Lifting",
     "Delivering",
   ]);
-
 
   return (
     <Stack>
@@ -57,14 +56,23 @@ export const TaskForm = () => {
         placeholder="When is it due?"
         clearable={false}
       />
+      <TextInput label="My address" placeholder="15329 Huston 21st" />
       <TextInput
-        label="My address"
-        placeholder="15329 Huston 21st"
+        label="Offer"
+        placeholder="How much moneeeey do you wanna give?"
       />
-      <TextInput
-      label="Offer"
-      placeholder="How much moneeeey do you wanna give?"
-    />
+      <Button
+      style={{
+        marginTop: 19,
+      }}
+        radius="xl"
+        size="lg"
+        variant="gradient"
+        gradient={{ from: "teal", to: "lime", deg: 105 }}
+        fullWidth={true}
+      >
+        Post
+      </Button>
     </Stack>
   );
 };
