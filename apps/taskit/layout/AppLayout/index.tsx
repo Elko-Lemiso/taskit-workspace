@@ -1,4 +1,3 @@
-
 import { AppShellComponent } from "../../components/AppShell";
 import {
   MantineProvider,
@@ -19,21 +18,23 @@ export default function AppLayout({ children, Component, pageProps, router }) {
   useHotkeys([["mod+J", () => toggleColorScheme()]]);
 
   return (
-    <ColorSchemeProvider
-      colorScheme={colorScheme}
-      toggleColorScheme={toggleColorScheme}
-    >
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-        theme={{ colorScheme }}
+      <ColorSchemeProvider
+        colorScheme={colorScheme}
+        toggleColorScheme={toggleColorScheme}
       >
-        <main className="app">
-          <AppShellComponent Component={Component} router={router} pageProps={pageProps}  />
-        </main>
-      </MantineProvider>
-    </ColorSchemeProvider>
+        <MantineProvider
+          withGlobalStyles
+          withNormalizeCSS
+          theme={{ colorScheme }}
+        >
+          <main className="app">
+            <AppShellComponent
+              Component={Component}
+              router={router}
+              pageProps={pageProps}
+            />
+          </main>
+        </MantineProvider>
+      </ColorSchemeProvider>
   );
-
-  
 }

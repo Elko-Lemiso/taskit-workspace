@@ -1,5 +1,3 @@
-import { GitPullRequest, AlertCircle, Shoe } from "tabler-icons-react";
-import { GiBroom } from "react-icons/gi";
 import { ThemeIcon, UnstyledButton, Badge, Stack, Text } from "@mantine/core";
 import { RiChat3Fill } from "react-icons/ri";
 import { FaHandSpock, FaMapMarker, FaClock } from "react-icons/fa";
@@ -19,7 +17,7 @@ interface MainLinkProps {
   jid: string;
 }
 
-function MainLink({
+export const MainLink = ({
   icon,
   color,
   label,
@@ -30,8 +28,8 @@ function MainLink({
   status,
   comments,
   applicants,
-  jid
-}: MainLinkProps) {
+  jid,
+}: MainLinkProps) => {
   const router = useRouter();
   return (
     <UnstyledButton
@@ -112,8 +110,7 @@ function MainLink({
         <Text weight={700} size="xl">
           ${offer}
         </Text>
-        <Badge color="teal" size="xs" variant="outline"
-        >
+        <Badge color="teal" size="xs" variant="outline">
           {status}
         </Badge>
         <div style={{ display: "flex", justifyContent: "space-evenly" }}>
@@ -127,174 +124,4 @@ function MainLink({
       </div>
     </UnstyledButton>
   );
-}
-
-const data = [
-  {
-    icon: <GitPullRequest size={16} />,
-    color: "blue",
-    label: "Cleaning shoes",
-    category: "Cleaning",
-    jobTime: "Thur 12 March",
-    location: "Amsterdam",
-    offer: 15,
-    status: "open",
-    comments: 3,
-    applicants: 5, jid: "23456gfadsgfa78"
-  },
-  {
-    icon: <AlertCircle size={16} />,
-    color: "teal",
-    label: "Cleaning shoes",
-    category: "Cleaning",
-    jobTime: "Thur 12 March",
-    location: "Amsterdam",
-    offer: 15,
-    status: "open",
-    comments: 3,
-    applicants: 5, jid: "23456gfadsgiifa78"
-  },
-  {
-    icon: <Shoe size={16} />,
-    color: "violet",
-    label: "Cleaning shoes",
-    category: "Cleaning",
-    jobTime: "Thur 12 March",
-    location: "Amsterdam",
-    offer: 15,
-    status: "open",
-    comments: 3,
-    applicants: 5, jid: "23456gfasxgjfxdsgfa78"
-  },
-  {
-    icon: <GiBroom size={16} />,
-    color: "grape",
-    label: "Cleaning shoes ",
-    category: "Cleaning",
-    jobTime: "Thur 12 March",
-    location: "Amsterdam",
-    offer: 15,
-    status: "open",
-    comments: 3,
-    applicants: 5, jid: "23456gfgsdgasrgradsgfa78"
-  },
-  {
-    icon: <Shoe size={16} />,
-    color: "grape",
-    label: "Cleaning shoes ",
-    category: "Cleaning",
-    jobTime: "Thur 12 March",
-    location: "Amsterdam",
-    offer: 15,
-    status: "open",
-    comments: 3,
-    applicants: 5, jid: "23456gfadewggrehsgfa78"
-  },
-  {
-    icon: <Shoe size={16} />,
-    color: "grape",
-    label: "Cleaning shoes ",
-    category: "Cleaning",
-    jobTime: "Thur 12 March",
-    location: "Amsterdam",
-    offer: 15,
-    status: "open",
-    comments: 3,
-    applicants: 5, jid: "23456gfjztrjzrtjadsgfa78"
-  },{
-    icon: <Shoe size={16} />,
-    color: "grape",
-    label: "Cleaning shoes ",
-    category: "Cleaning",
-    jobTime: "Thur 12 March",
-    location: "Amsterdam",
-    offer: 15,
-    status: "open",
-    comments: 3,
-    applicants: 5, jid: "23jdzfjhtfjetj456gfadsgfa78"
-  },{
-    icon: <Shoe size={16} />,
-    color: "grape",
-    label: "Cleaning shoes ",
-    category: "Cleaning",
-    jobTime: "Thur 12 March",
-    location: "Amsterdam",
-    offer: 15,
-    status: "open",
-    comments: 3,
-    applicants: 5, jid: "23456gfadshzdfhfdzhzdfhfdzhgfa78"
-  },{
-    icon: <Shoe size={16} />,
-    color: "grape",
-    label: "Cleaning shoes ",
-    category: "Cleaning",
-    jobTime: "Thur 12 March",
-    location: "Amsterdam",
-    offer: 15,
-    status: "open",
-    comments: 3,
-    applicants: 5, jid: "23456ghfdzjmgjndzfadsgfa78"
-  },{
-    icon: <Shoe size={16} />,
-    color: "grape",
-    label: "Cleaning shoes ",
-    category: "Cleaning",
-    jobTime: "Thur 12 March",
-    location: "Amsterdam",
-    offer: 15,
-    status: "open",
-    comments: 3,
-    applicants: 5, jid: "23456gfahdzfhfdzhzrtdsgfa78"
-  },{
-    icon: <Shoe size={16} />,
-    color: "grape",
-    label: "Cleaning shoes ",
-    category: "Cleaning",
-    jobTime: "Thur 12 March",
-    location: "Amsterdam",
-    offer: 15,
-    status: "open",
-    comments: 3,
-    applicants: 5, jid: "23456gfaddgfhdzfhfsgfa78"
-  },{
-    icon: <Shoe size={16} />,
-    color: "grape",
-    label: "Cleaning shoes ",
-    category: "Cleaning",
-    jobTime: "Thur 12 March",
-    location: "Amsterdam",
-    offer: 15,
-    status: "open",
-    comments: 3,
-    applicants: 5, jid: "23456ggfjgfxjtrjtjfadsgfa78"
-  },{
-    icon: <Shoe size={16} />,
-    color: "grape",
-    label: "Cleaning shoes ",
-    category: "Cleaning",
-    jobTime: "Thur 12 March",
-    location: "Amsterdam",
-    offer: 15,
-    status: "open",
-    comments: 3,
-    applicants: 5, jid: "23456gfjgfjfghjgfjgjfgjadsgfa78"
-  },
-  {
-    icon: <Shoe size={16} />,
-    color: "grape",
-    label: "Cleaning shoes ",
-    category: "Cleaning",
-    jobTime: "Thur 12 March",
-    location: "Amsterdam",
-    offer: 15,
-    status: "open",
-    comments: 3,
-    applicants: 5, jid: "23456gbsdbhgffadsgfa78"
-  },
-];
-
-export function MainLinks() {
-  const links = data.map((link) => <MainLink {...link} key={link.label} />);
-
-  return <div>{links}</div>;
-}
+};

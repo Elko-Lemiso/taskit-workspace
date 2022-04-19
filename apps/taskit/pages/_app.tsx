@@ -2,13 +2,6 @@ import { useEffect, useState } from "react";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import "./styles.css";
-import { Ui } from "@taskit-workspace/ui";
-import {
-  MantineProvider,
-  ColorSchemeProvider,
-  ColorScheme,
-} from "@mantine/core";
-import { useHotkeys, useLocalStorage } from "@mantine/hooks";
 import { ApolloProvider } from "@apollo/client";
 import { split, HttpLink } from "@apollo/client";
 import { getMainDefinition } from "@apollo/client/utilities";
@@ -16,6 +9,7 @@ import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { createClient } from "graphql-ws";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import AppLayout from "../layout/AppLayout";
+
 function CustomApp({ Component, pageProps, router }: AppProps) {
   const [client, setClient] = useState(null);
 
