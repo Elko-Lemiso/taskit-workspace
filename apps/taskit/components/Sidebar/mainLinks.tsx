@@ -35,7 +35,7 @@ function MainLink({
   const router = useRouter();
   return (
     <UnstyledButton
-      onClick={() => router.push(`/job/${jid}`)}
+      onClick={() => router.push(`/jobs/${jid}`)}
       sx={(theme) => ({
         display: "flex",
         width: "100%",

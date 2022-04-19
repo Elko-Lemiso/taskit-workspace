@@ -9,26 +9,20 @@ import {
   ColorScheme,
 } from "@mantine/core";
 import { useHotkeys, useLocalStorage } from "@mantine/hooks";
-// import { wsClient } from "./apollo";
 import { ApolloProvider } from "@apollo/client";
 import { split, HttpLink } from "@apollo/client";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { createClient } from "graphql-ws";
-import { WebSocketLink } from "@apollo/client/link/ws";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
-import ws from "ws";
-
+import AppLayout from "../layout/AppLayout";
 function CustomApp({ Component, pageProps, router }: AppProps) {
-  const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
-    key: "mantine-color-scheme",
-    defaultValue: "light",
-  });
-  const toggleColorScheme = (value?: ColorScheme) =>
-    setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
-
-  useHotkeys([["mod+J", () => toggleColorScheme()]]);
   const [client, setClient] = useState(null);
+
+  // TODO : use Server Side rendering to initialize functional components
+  // TODO : use server components
+  // TODO : use a suspense fallback to initialize a page. => SKELETON / LOAD
+
   useEffect(() => {
     if (window) {
       const httpLink = new HttpLink({
@@ -67,24 +61,11 @@ function CustomApp({ Component, pageProps, router }: AppProps) {
           <Head>
             <title>Task it</title>
           </Head>
-          <ColorSchemeProvider
-            colorScheme={colorScheme}
-            toggleColorScheme={toggleColorScheme}
-          >
-            <MantineProvider
-              withGlobalStyles
-              withNormalizeCSS
-              theme={{ colorScheme }}
-            >
-              <main className="app">
-                <Ui
-                  Component={Component}
-                  router={router}
-                  pageProps={pageProps}
-                />
-              </main>
-            </MantineProvider>
-          </ColorSchemeProvider>
+          <AppLayout
+            Component={Component}
+            router={router}
+            pageProps={pageProps}
+          />
         </>
       </ApolloProvider>
     )

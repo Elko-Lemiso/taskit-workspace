@@ -17,9 +17,23 @@ export const TaskMutation = {
       });
   },
   updateTask: (parent, args) => {
-    // whatever
+    requester
+      .send({ type: "update.task", query: args })
+      .then((data) => {
+        return data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
   deleteTask: (parent, args) => {
-    // whatever
+    requester
+      .send({ type: "delete.task", query: args })
+      .then((data) => {
+        return data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };

@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@taskit-workspace/sidebar": ["libs/sidebar/src/index.ts"],
       "@taskit-workspace/subscription": ["libs/subscription/src/index.ts"],
       "@taskit-workspace/ui": ["libs/ui/src/index.ts"]
     }

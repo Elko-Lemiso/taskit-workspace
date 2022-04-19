@@ -2,7 +2,7 @@ import { User } from "../schemas";
 import mongoose from "mongoose";
 
 export const userHandler = {
-  createTask: async (req, ret) => {
+  createUser: async (req, ret) => {
     const newUser = new User({
       ...req.data,
     });

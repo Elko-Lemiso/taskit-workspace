@@ -17,11 +17,24 @@ export const UserMutation = {
       });
   },
   updateUser: (parent, args) => {
-    // whatever
+    requester
+      .send({ type: "update.user", query: args })
+      .then((data) => {
+        return data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
-  
+
   deleteTask: (parent, args) => {
-    // whatever
+    requester
+      .send({ type: "delete.user", query: args })
+      .then((data) => {
+        return data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
- 
