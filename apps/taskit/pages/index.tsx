@@ -1,21 +1,20 @@
 import { useEffect } from "react";
 import { useSubscription, gql } from "@apollo/client";
-
+import { motion, useAnimation } from "framer-motion";
+import { Title } from "@mantine/core";
 export function Index() {
-  const SUB = gql`
-    subscription {
-      numberIncremented
-    }
-  `;
-
-  const { loading, data } = useSubscription(SUB);
-
+  
   return (
-    <div>
-      <p>{loading ? "Loading..." : data?.numberIncremented}</p>
+    <div
+      style={{
+        overflowX: "hidden",
+        width: "100vw",
+        position: "relative",
+      }}
+    >
+      
     </div>
   );
-
 }
 
 export default Index;

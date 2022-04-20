@@ -49,6 +49,13 @@ function CustomApp({ Component, pageProps, router }: AppProps) {
     }
   }, [process.browser]);
 
+  const css = `
+  @font-face {
+    font-family: Stretch Pro;
+    src:url("/fonts/StretchPro.otf");
+  }
+  `;
+
   return (
     client && (
       <UserProvider>
@@ -56,6 +63,7 @@ function CustomApp({ Component, pageProps, router }: AppProps) {
           <>
             <Head>
               <title>Task it</title>
+              <style>{css}</style>
             </Head>
             <AppLayout
               Component={Component}

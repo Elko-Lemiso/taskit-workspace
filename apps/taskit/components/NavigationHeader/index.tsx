@@ -1,30 +1,20 @@
-import styles from "./navigation.module.scss";
 import {
   Header,
   ActionIcon,
   useMantineColorScheme,
   Button,
   Grid,
-  Text,
-  ThemeIcon,
+  Title,
   Menu,
-  Divider,
 } from "@mantine/core";
 
-import { Alien, Sun, MoonStars } from "tabler-icons-react";
+import { Sun, MoonStars } from "tabler-icons-react";
 import { WiAlien } from "react-icons/wi";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Avatar } from "@mantine/core";
-import {
-  Settings,
-  Search,
-  Photo,
-  MessageCircle,
-  Trash,
-  ArrowsLeftRight,
-} from "tabler-icons-react";
-import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
+import { Settings, MessageCircle } from "tabler-icons-react";
+import { useUser } from "@auth0/nextjs-auth0";
 import { ExternalLink } from "tabler-icons-react";
 /* eslint-disable-next-line */
 export interface NavigationProps {}
@@ -35,31 +25,53 @@ export function NavigationHeader(props: NavigationProps) {
   const dark = colorScheme === "dark";
 
   const { user, isLoading } = useUser();
- 
-  console.log(user);
-  
+
   return (
     <Header height={60} p="md">
       <div style={{ display: "flex", alignItems: "center", height: "100%" }}>
-        <Grid align="center" columns={7} style={{ width: "100%" }}>
+        <Grid
+          align="center"
+          columns={3}
+          style={{ width: "100%", justifyContent: "space-between" }}
+        >
           <Grid.Col span={2}>
             <Link href="/">
-              <ActionIcon
-                variant="outline"
-                radius="xl"
-                color={"green"}
-                size="lg"
+              <span
+                style={{
+                  display: "flex",
+                  alignContent: "center",
+                  alignItems: "center",
+                }}
               >
-                <WiAlien size={25} />
-              </ActionIcon>
+                <ActionIcon variant="outline" radius="xl" size="lg">
+                  <WiAlien size={25} />
+                </ActionIcon>
+                <Title
+                  style={{ marginLeft: 10, fontFamily: "Stretch Pro" }}
+                  order={1}
+                >
+                  TASK IT
+                </Title>
+              </span>
             </Link>
           </Grid.Col>
 
           {user ? (
             <Grid.Col
-              span={5}
+              span={1}
               style={{ display: "flex", justifyContent: "flex-end" }}
             >
+              <Button
+                onClick={() => router.push("/jobs")}
+                style={{ marginRight: 10 }}
+                variant="outline"
+                radius="xl"
+                size="md"
+                color="gray"
+              >
+                All Tasks
+              </Button>
+
               <Menu
                 control={<Avatar src={user.picture} radius="xl" />}
                 placement="end"
@@ -94,14 +106,14 @@ export function NavigationHeader(props: NavigationProps) {
           ) : (
             <Grid.Col
               style={{ display: "flex", justifyContent: "flex-end" }}
-              span={5}
+              span={1}
             >
               <Button
                 onClick={() => router.push("/api/auth/login")}
                 style={{ marginLeft: 10 }}
                 variant="gradient"
                 radius="xl"
-                gradient={{ from: "orange", to: "red" }}
+                gradient={{ from: "#855630", to: "red" }}
               >
                 Login
               </Button>
@@ -110,7 +122,7 @@ export function NavigationHeader(props: NavigationProps) {
                 style={{ marginLeft: 10 }}
                 variant="gradient"
                 radius="xl"
-                gradient={{ from: "teal", to: "lime", deg: 105 }}
+                gradient={{ from: "#457265", to: "#3b995c", deg: 105 }}
               >
                 Join us
               </Button>
