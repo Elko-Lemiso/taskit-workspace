@@ -11,6 +11,7 @@ import { ApolloClient, InMemoryCache } from "@apollo/client";
 import AppLayout from "../layout/AppLayout";
 import { UserProvider } from "@auth0/nextjs-auth0";
 
+import Script from "next/script";
 function CustomApp({ Component, pageProps, router }: AppProps) {
   const [client, setClient] = useState(null);
 
@@ -69,7 +70,7 @@ function CustomApp({ Component, pageProps, router }: AppProps) {
               Component={Component}
               router={router}
               pageProps={pageProps}
-            />
+            />{" "}
           </>
         </ApolloProvider>
       </UserProvider>

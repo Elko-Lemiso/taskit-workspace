@@ -6,6 +6,7 @@ import {
 } from "@mantine/core";
 import { useHotkeys, useLocalStorage } from "@mantine/hooks";
 
+import { ModalsProvider } from "@mantine/modals";
 export default function AppLayout({ children, Component, pageProps, router }) {
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: "mantine-color-scheme",
@@ -17,15 +18,16 @@ export default function AppLayout({ children, Component, pageProps, router }) {
   useHotkeys([["mod+J", () => toggleColorScheme()]]);
 
   return (
-      <ColorSchemeProvider
-        colorScheme={colorScheme}
-        toggleColorScheme={toggleColorScheme}
+    <ColorSchemeProvider
+      colorScheme={colorScheme}
+      toggleColorScheme={toggleColorScheme}
+    >
+      <MantineProvider
+        withGlobalStyles
+        withNormalizeCSS
+        theme={{ colorScheme }}
       >
-        <MantineProvider
-          withGlobalStyles
-          withNormalizeCSS
-          theme={{ colorScheme }}
-        >
+        <ModalsProvider>
           <main className="app">
             <AppShellComponent
               Component={Component}
@@ -33,7 +35,8 @@ export default function AppLayout({ children, Component, pageProps, router }) {
               pageProps={pageProps}
             />
           </main>
-        </MantineProvider>
-      </ColorSchemeProvider>
+        </ModalsProvider>
+      </MantineProvider>
+    </ColorSchemeProvider>
   );
 }

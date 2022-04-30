@@ -3,6 +3,7 @@ import { RiChat3Fill } from "react-icons/ri";
 import { FaHandSpock, FaMapMarker, FaClock } from "react-icons/fa";
 import { useRouter } from "next/router";
 
+import { motion, AnimatePresence } from "framer-motion";
 interface TaskCardProps {
   icon: React.ReactNode;
   color: string;
@@ -19,7 +20,6 @@ interface TaskCardProps {
 
 export const TaskCard = ({
   icon,
-  color,
   label,
   category,
   jobTime,
@@ -32,100 +32,112 @@ export const TaskCard = ({
 }: TaskCardProps) => {
   const router = useRouter();
   return (
-    <UnstyledButton
-      onClick={() => router.push(`/jobs/${jid}`)}
-      sx={(theme) => ({
-        display: "flex",
-        width: "100%",
-        alignItems: "center",
-        padding: theme.spacing.xs,
-        marginTop: 8,
-        position: "relative",
-        borderRadius: theme.radius.sm,
-        color:
-          theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
-        "&:hover": {
-          backgroundColor:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[6]
-              : theme.colors.gray[0],
-        },
-      })}
+    <motion.div
+      whileHover={{ scale: [1, 0.99] }}
+      transition={{ type: "spring", duration: 0.6 , bounce: 0.46}}
+      initial={{ opacity: 0, y: 66}}
+      animate={{ opacity: 1 ,  y: 0}}
+      exit={{ opacity: 0 }}
     >
-      <div>
-        <ThemeIcon
-          variant="gradient"
-          gradient={{ from: "orange", to: "red" }}
-          radius="xl"
-          size="xl"
-        >
-          {icon}
-        </ThemeIcon>
-      </div>
-      <div
-        style={{
-          height: 86,
+      <UnstyledButton
+        onClick={() => router.push(`/jobs/${jid}`)}
+        sx={(theme) => ({
           display: "flex",
-          flexDirection: "column",
-          marginLeft: 19,
-          justifyContent: "space-evenly",
-        }}
+          width: "100%",
+          alignItems: "center",
+          padding: theme.spacing.xs,
+          marginTop: 8,
+          position: "relative",
+          borderRadius: theme.radius.sm,
+          color:
+            theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
+          "&:hover": {
+            backgroundColor:
+              theme.colorScheme === "dark"
+                ? theme.colors.dark[6]
+                : theme.colors.gray[0],
+          },
+        })}
       >
-        <Text color="dimmed" transform="uppercase" size="xs">
-          {category}
-        </Text>
-        <Text
-          component="span"
-          align="center"
-          size="md"
-          weight={700}
-          style={{ fontFamily: "Greycliff CF, sans-serif" }}
+        <div>
+          <ThemeIcon
+            variant="gradient"
+            gradient={{ from: "orange", to: "red" }}
+            radius="xl"
+            size="xl"
+          >
+            {icon}
+          </ThemeIcon>
+        </div>
+        <div
+          style={{
+            height: 86,
+            display: "flex",
+            flexDirection: "column",
+            marginLeft: 19,
+            justifyContent: "space-evenly",
+          }}
         >
-          {label}
-        </Text>
-        <Text size="xs">
-          <FaMapMarker size={10} /> {location}
-        </Text>
-        <Text weight={700} size="xs">
-          <FaClock size={10} /> {jobTime}
-        </Text>
-      </div>
-
-      <div
-        style={{
-          height: 86,
-          display: "flex",
-          flexDirection: "column",
-          marginLeft: 29,
-          justifyContent: "space-between",
-          textAlign: "right",
-          position: "absolute",
-          right: "21px",
-        }}
-      >
-        <Text
-          variant="gradient"
-          gradient={{ from: "teal", to: "lime", deg: 105 }}
-          weight={700}
-          size="xl"
-        >
-          ${offer}
-        </Text>
-        <Badge
-          variant="gradient"
-          gradient={status === 'open' ? { from: "teal", to: "lime", deg: 105 } : { from: "orange", to: "red" }}
-        >
-          {status}
-        </Badge>
-        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-          <Text size="xs">
-            <RiChat3Fill size={10} /> {comments}
+          <Text color="dimmed" transform="uppercase" size="xs">
+            {category}
+          </Text>
+          <Text
+            component="span"
+            align="center"
+            size="md"
+            weight={700}
+            // style={{ fontFamily: "Greycliff CF, sans-serif" }}
+          >
+            {label}
           </Text>
           <Text size="xs">
-            <FaHandSpock size={10} /> {applicants}
+            <FaMapMarker size={10} /> {location}
+          </Text>
+          <Text weight={700} size="xs">
+            <FaClock size={10} /> {jobTime}
           </Text>
         </div>
-      </div>
-    </UnstyledButton>
+
+        <div
+          style={{
+            height: 86,
+            display: "flex",
+            flexDirection: "column",
+            marginLeft: 29,
+            justifyContent: "space-between",
+            textAlign: "right",
+            position: "absolute",
+            right: "21px",
+          }}
+        >
+          <Text
+            variant="gradient"
+            gradient={{ from: "teal", to: "lime", deg: 105 }}
+            weight={700}
+            size="xl"
+          >
+            ${offer}
+          </Text>
+          <Badge
+            variant="gradient"
+            gradient={
+              status === "open"
+                ? { from: "teal", to: "lime", deg: 105 }
+                : { from: "orange", to: "red" }
+            }
+          >
+            {status}
+          </Badge>
+          <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+            <Text size="xs">
+              <RiChat3Fill size={10} /> {comments}
+            </Text>
+            <Text size="xs">
+              <FaHandSpock size={10} /> {applicants}
+            </Text>
+          </div>
+        </div>
+      </UnstyledButton>
+    </motion.div>
   );
 };

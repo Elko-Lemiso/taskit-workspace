@@ -16,6 +16,7 @@ import { Avatar } from "@mantine/core";
 import { Settings, MessageCircle } from "tabler-icons-react";
 import { useUser } from "@auth0/nextjs-auth0";
 import { ExternalLink } from "tabler-icons-react";
+import { motion, AnimatePresence } from "framer-motion";
 /* eslint-disable-next-line */
 export interface NavigationProps {}
 
@@ -35,25 +36,38 @@ export function NavigationHeader(props: NavigationProps) {
           style={{ width: "100%", justifyContent: "space-between" }}
         >
           <Grid.Col span={2}>
-            <Link href="/">
-              <span
-                style={{
-                  display: "flex",
-                  alignContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <ActionIcon variant="outline" radius="xl" size="lg">
-                  <WiAlien size={25} />
-                </ActionIcon>
-                <Title
-                  style={{ marginLeft: 10, fontFamily: "Stretch Pro" }}
-                  order={1}
+            <span
+              style={{
+                display: "flex",
+                alignContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Link href="/">
+                <motion.div
+                  whileHover={{ scale: 1.2 }}
+                  transition={{ duration: 0.6, type: "spring", velocity: 2 }}
                 >
-                  TASK IT
-                </Title>
-              </span>
-            </Link>
+                  <ActionIcon variant="outline" radius="xl" size="lg">
+                    <WiAlien size={25} />
+                  </ActionIcon>
+                </motion.div>
+              </Link>
+              <Link href="/jobs">
+                <motion.div
+                  whileHover={{ cursor: "pointer" }}
+                  transition={{ duration: 1 }}
+                  whileTap={{ scale: 0.2 }}
+                >
+                  <Title
+                    style={{ marginLeft: 10, fontFamily: "Stretch Pro" }}
+                    order={1}
+                  >
+                    TASK IT
+                  </Title>
+                </motion.div>
+              </Link>
+            </span>
           </Grid.Col>
 
           {user ? (
@@ -62,14 +76,14 @@ export function NavigationHeader(props: NavigationProps) {
               style={{ display: "flex", justifyContent: "flex-end" }}
             >
               <Button
-                onClick={() => router.push("/jobs")}
+                onClick={() => router.push("/jobs/my")}
                 style={{ marginRight: 10 }}
                 variant="outline"
                 radius="xl"
                 size="md"
                 color="gray"
               >
-                All Tasks
+                My Tasks
               </Button>
 
               <Menu

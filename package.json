@@ -11,9 +11,11 @@
   "dependencies": {
     "@apollo/client": "^3.5.10",
     "@auth0/nextjs-auth0": "^1.7.0",
+    "@googlemaps/react-wrapper": "^1.1.32",
     "@mantine/core": "^4.1.0",
     "@mantine/dates": "^4.1.0",
     "@mantine/hooks": "^4.1.0",
+    "@mantine/modals": "^4.1.4",
     "@mantine/next": "^4.1.0",
     "@nrwl/next": "13.9.5",
     "apollo-server-core": "^3.6.7",
